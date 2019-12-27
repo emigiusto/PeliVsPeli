@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 
 
 app.get('/competencias',controller.traercompetencias);
+app.get('/competencias:id',controller.competencia);
 
 //seteamos el puerto en el cual va a escuchar los pedidos la aplicación
 var puerto = process.env.PORT || 8080;
