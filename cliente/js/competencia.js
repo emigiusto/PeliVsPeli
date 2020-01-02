@@ -81,8 +81,10 @@ function CompetenciasController () {
 		// Se obtienen de la api las opciones de películas
 		var opciones = $.getJSON(server+"/competencias/"+id+"/peliculas",
 	    function(data) {
-	    	// Se cargan las opciones en el DOM
-	    	self.cargarOpciones(id, data);
+			// Se cargan las opciones en el DOM
+			console.log(data)
+			self.cargarOpciones(id, data);
+			
 	    });
 	},
 	this.cargarOpciones = function (id, opciones){

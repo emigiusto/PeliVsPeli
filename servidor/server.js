@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 
 app.get('/competencias',controller.traercompetencias);
 app.get('/competencias/:id',controller.competencia);
+app.get('/competencias/:id/peliculas',controller.traerpeliscompetencia);
 
 app.get('/',function (req, res) {
   res.send('Helloooo');

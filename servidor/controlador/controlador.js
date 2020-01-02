@@ -18,9 +18,7 @@ function traercompetencias(req, res) {
 function competencia(req, res) {
 //TRAER DOS ALEATORIAS??
     var idCompetencia = req.params.id;
-    console.log(idCompetencia)
     var sql = "select * from competencias where id = " + idCompetencia;
-    console.log(sql)
             con.query(sql, function(error, resultado) {
         if (error) {
             console.log("Hubo un error en la consulta", error.message);
@@ -32,7 +30,30 @@ function competencia(req, res) {
     });
 }
 
+
+function traerpeliscompetencia(req, res) {
+    //TRAER DOS ALEATORIAS??
+        var idCompetencia = req.params.id;
+        var sql = "select *  from pelicula join competencias on competencias.id = " + idCompetencia
+                    + " order by rand() limit 2";
+                con.query(sql, function(error, arraypeliculasrandom) {
+            if (error) {
+                console.log("Hubo un error en la consulta", error.message);
+                return res.status(404).send("Hubo un error en la consulta");
+            }
+            if (arraypeliculasrandom.length>0){
+                var results ={
+                    competencia: arraypeliculasrandom[0].nombre,
+                    peliculas: arraypeliculasrandom
+                }
+            }
+
+            res.send(JSON.stringify(results));
+        });
+    }
+
 module.exports = {
     competencia: competencia,
-    traercompetencias:traercompetencias
+    traercompetencias:traercompetencias,
+    traerpeliscompetencia: traerpeliscompetencia
 };
