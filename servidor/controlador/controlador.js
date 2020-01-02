@@ -18,9 +18,9 @@ function traercompetencias(req, res) {
 function competencia(req, res) {
 //TRAER DOS ALEATORIAS??
     var idCompetencia = req.params.id;
-
+    console.log(idCompetencia)
     var sql = "select * from competencias where id = " + idCompetencia;
-    
+    console.log(sql)
             con.query(sql, function(error, resultado) {
         if (error) {
             console.log("Hubo un error en la consulta", error.message);
@@ -33,5 +33,6 @@ function competencia(req, res) {
 }
 
 module.exports = {
-    competencia: competencia
+    competencia: competencia,
+    traercompetencias:traercompetencias
 };

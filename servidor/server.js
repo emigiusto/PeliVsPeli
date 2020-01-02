@@ -16,8 +16,11 @@ app.use(bodyParser.json());
 
 
 app.get('/competencias',controller.traercompetencias);
-app.get('/competencias:id',controller.competencia);
+app.get('/competencias/:id',controller.competencia);
 
+app.get('/',function (req, res) {
+  res.send('Helloooo');
+});
 //seteamos el puerto en el cual va a escuchar los pedidos la aplicación
 var puerto = process.env.PORT || 8080;
 
