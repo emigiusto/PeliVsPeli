@@ -21,7 +21,11 @@ app.get('/competencias/:id/peliculas',controller.traerpeliscompetencia);
 
 app.get('/competencias/:idCompetencia/resultados',controller.traerresultadoscompetencia);
 
-app.post('/competencias/:idCompetencia/voto/',controller.votarunacompetencia)
+app.post('/competencias/:idCompetencia/voto/',controller.votarunacompetencia);
+app.post('/competencias',controller.crearcompetencia);
+
+app.delete('/competencias/:idCompetencia/votos',controller.borrarvotos)
+
 
 app.get('/',function (req, res) {
   res.send('Helloooo');

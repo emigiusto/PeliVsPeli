@@ -58,20 +58,21 @@ function CompetenciasController () {
 		// Se obtiene de la api el detalle de una competencia
 		var opciones = $.getJSON(server+"/competencias/"+id, function(data) {
 			// Se carga la información obtenida en el DOM
+			console.log(data)
 	    	self.cargarCompetencia(id, data);
 	    });
 	},
 	this.cargarCompetencia = function (id, data){
 		// data es el detalle de una competencia que retornó la api (un objeto json)
 		// Se coloca en el elemento correspondiente el nombre de la competencia
-		$(".nombre").text(data.nombre);
-		$(".nombre").val(data.nombre);
+		$(".nombre").text(data[0].nombre);
+		$(".nombre").val(data[0].nombre);
 		// Se coloca en el elemento correspondiente el género de películas de la competencia, si es que hay alguno
-		$(".genero").text(data.genero_nombre);
+		$(".genero").text(data[0].genero_nombre);
 		// Se coloca en el elemento correspondiente el actor/actriz de la competencia, si es que hay alguno/a
-		$(".actor").text(data.actor_nombre);
+		$(".actor").text(data[0].actor_nombre);
 		// Se coloca en el elemento correspondiente el director/a de la competencia, si es que hay alguno/a
-		$(".director").text(data.director_nombre);
+		$(".director").text(data[0].director_nombre);
 	},
 
 	// Esta método obtiene y carga las opciones de películas para votar

@@ -70,29 +70,76 @@ function traerpeliscompetencia(req, res) {
     
                 res.send("Voto Ok");
             });
-        }
+    }
         
 
-        function traerresultadoscompetencia(req, res) {
+    function traerresultadoscompetencia(req, res) {
 
-            var idCompetencia = req.params.idCompetencia;
+        var idCompetencia = req.params.idCompetencia;
+        var sql =     "select pelicula.id as 'peliculaId',"
+                    + "pelicula.titulo,pelicula.poster,"
+                    + "competencias.nombre as 'competenciaNombre',"
+                    + "competencias.id as 'competenciaId',"
+                    + "count(votos.id) as 'votos'"
+                    + " from pelicula"
+                    + " join competencias on competencias.id = " + idCompetencia
+                    + " join votos on (votos.pelicula_id = pelicula.id and votos.competencia_id = competencias.id)"
+                    + " GROUP BY pelicula.id order by votos desc limit 3;"
 
-            var sql = "INSERT INTO `votos` VALUES (NULL," + idCompetencia + "," + votoPeli +")"
+        con.query(sql, function(error, results) {
+            if (error) {
+                console.log("Hubo un error en la consulta", error.message);
+                return res.status(404).send("Hubo un error en la consulta");
+            }
+            var resultado = {
+                competencia: results[0].competenciaNombre,
+                resultados: results
+            }
+
+                res.send(resultado);
+            });
+    }
+
+    function crearcompetencia(req, res) {
+
+        var idCompetencia = req.params.idCompetencia;
+        var sql = "INSERT INTO `competencias` VALUES (NULL,"+ nombreCompetencia +")";
 
         con.query(sql, function(error, result) {
                 if (error) {
+                    console.log(error)
                     console.log("Hubo un error en la consulta", error.message);
-                    return res.status(404).send("Hubo un error en la consulta");
+                    return res.status(404).send("No pudo crearse la competencia");
                 }
-    
-                res.send("Resultados Ok");
+                res.send("Competencia Creada exitosamente");
             });
-        }
+    }
 
+    function borrarvotos(req, res) {
+
+        var idCompetencia = req.params.idCompetencia;
+        var sql = "DELETE FROM votos WHERE competencia_id = " + idCompetencia
+
+        con.query(sql, function(error, result) {
+            if (error) {
+                console.log(error)
+                console.log("Hubo un error en la consulta", error.message);
+                return res.status(404).send("No pudo crearse la competencia");
+            }
+            res.send("Competencia Reiniciada exitosamente");
+        });
+    }
+    
+
+    
 module.exports = {
     competencia: competencia,
     traercompetencias:traercompetencias,
     traerpeliscompetencia: traerpeliscompetencia,
     votarunacompetencia:votarunacompetencia,
-    traerresultadoscompetencia: traerresultadoscompetencia
+
+    traerresultadoscompetencia: traerresultadoscompetencia,
+    crearcompetencia: crearcompetencia,
+
+    borrarvotos:borrarvotos
 };
