@@ -95,7 +95,7 @@ function CompetenciasController () {
 			// Se selecciona el div que contiene la opción a cargar
 			var divOpcion = "#opcion"+(i+1);
 			// Se carga el valor del id de la película de la opción actual
-			$(divOpcion+" .idPelicula").val((opciones.peliculas)[i].id);
+			$(divOpcion+" .idPelicula").val((opciones.peliculas)[i].peliculaId);
 			// Se carga la imagen del poster de la película de la opción actual
 			$(divOpcion+" .poster").attr("src",(opciones.peliculas)[i].poster);
 			// Se carga el título de la película de la opción actual
@@ -109,8 +109,9 @@ function CompetenciasController () {
 		var data = {'idPelicula': idPelicula};
 		// Se realiza el post a la api
 	    $.post(server+"/competencias/"+idCompetencia+"/voto", data, function(response) {
-	    	// Se redirige al usuario a ver los resultados de la competencia en la que votó
-		    window.location.replace("resultados.html?id="+idCompetencia);
+			// Se redirige al usuario a ver los resultados de la competencia en la que votó
+			
+		    window.location.replace("/resultados.html?id="+idCompetencia);
 		}, 'json');
 	},
 

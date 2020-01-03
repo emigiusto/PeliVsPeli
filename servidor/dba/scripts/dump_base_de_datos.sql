@@ -1,6 +1,5 @@
-DROP DATABASE IF EXISTS `competencias`;
-CREATE DATABASE `competencias`;
-USE `competencias`;
+
+USE `heroku_fddda7790abafa0`;
 
 DROP TABLE IF EXISTS `actor`;
 
@@ -102,5 +101,15 @@ CREATE TABLE `competencias` (
   PRIMARY KEY (`id`)
   ) ENGINE=InnoDB AUTO_INCREMENT=1024 DEFAULT CHARSET=latin1;
   INSERT INTO `competencias` VALUES (1,'¿Cuál es la mejor película?'),(2,'¿Qué drama te hizo llorar más?'),(3,'¿Cuál es la peli más bizarra?');
+
+DROP TABLE IF EXISTS `votos`;
+CREATE TABLE `votos` (
+  `id` int unsigned AUTO_INCREMENT,
+  `compentecia_id` int(11) unsigned NOT NULL,
+  `pelicula_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+  ) ENGINE=InnoDB AUTO_INCREMENT=1024 DEFAULT CHARSET=latin1;
+  INSERT INTO `votos` VALUES (1,2,231),(2,1,543),(3,1,212);
+  ALTER TABLE votos AUTO_INCREMENT=1;
 
   UNLOCK TABLES;
