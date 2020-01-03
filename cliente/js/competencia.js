@@ -172,6 +172,7 @@ function CompetenciasController () {
 	    	self.cargarResultados(id, data);
 	    });
 	},
+
 	this.cargarResultados =  function (id, data){
 		// Se carga el nombre de la competencia en el contenedor del título
 		$("#nombreCompetencia").text(data.competencia);
@@ -188,7 +189,7 @@ function CompetenciasController () {
 			// Se carga la cantidad de votor recibidos por la película en esta competencia
 			var votoOVotos = ((data.resultados)[i].votos > 1 ) ? 'VOTOS' : 'VOTO';
 			$(divResultado+" .votos").text((data.resultados)[i].votos + ' ' + votoOVotos);
-  	}
+  		}
 		for(i; i < 3; i++){
 			var divResultado = "#puesto"+(i+1);
 			$(divResultado).hide();

@@ -73,9 +73,26 @@ function traerpeliscompetencia(req, res) {
         }
         
 
+        function traerresultadoscompetencia(req, res) {
+
+            var idCompetencia = req.params.idCompetencia;
+
+            var sql = "INSERT INTO `votos` VALUES (NULL," + idCompetencia + "," + votoPeli +")"
+
+        con.query(sql, function(error, result) {
+                if (error) {
+                    console.log("Hubo un error en la consulta", error.message);
+                    return res.status(404).send("Hubo un error en la consulta");
+                }
+    
+                res.send("Resultados Ok");
+            });
+        }
+
 module.exports = {
     competencia: competencia,
     traercompetencias:traercompetencias,
     traerpeliscompetencia: traerpeliscompetencia,
-    votarunacompetencia:votarunacompetencia
+    votarunacompetencia:votarunacompetencia,
+    traerresultadoscompetencia: traerresultadoscompetencia
 };

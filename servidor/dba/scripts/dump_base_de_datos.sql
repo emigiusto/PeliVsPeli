@@ -105,11 +105,11 @@ CREATE TABLE `competencias` (
 DROP TABLE IF EXISTS `votos`;
 CREATE TABLE `votos` (
   `id` int unsigned AUTO_INCREMENT,
-  `compentecia_id` int(11) unsigned NOT NULL,
+  `competencia_id` int(11) unsigned NOT NULL,
   `pelicula_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
   ) ENGINE=InnoDB AUTO_INCREMENT=1024 DEFAULT CHARSET=latin1;
-  INSERT INTO `votos` VALUES (1,2,231),(2,1,543),(3,1,212);
+  INSERT INTO `votos` VALUES (NULL,3,231),(NULL,2,543),(NULL,2,212);
   ALTER TABLE votos AUTO_INCREMENT=1;
 
   UNLOCK TABLES;

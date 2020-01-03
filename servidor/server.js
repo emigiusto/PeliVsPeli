@@ -19,6 +19,8 @@ app.get('/competencias',controller.traercompetencias);
 app.get('/competencias/:id',controller.competencia);
 app.get('/competencias/:id/peliculas',controller.traerpeliscompetencia);
 
+app.get('/competencias/:idCompetencia/resultados',controller.traerresultadoscompetencia);
+
 app.post('/competencias/:idCompetencia/voto/',controller.votarunacompetencia)
 
 app.get('/',function (req, res) {
