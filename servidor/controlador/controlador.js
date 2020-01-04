@@ -101,8 +101,7 @@ function traerpeliscompetencia(req, res) {
     }
 
     function crearcompetencia(req, res) {
-
-        var idCompetencia = req.params.idCompetencia;
+        var nombreCompetencia = req.body;
         var sql = "INSERT INTO `competencias` VALUES (NULL,"+ nombreCompetencia +")";
 
         con.query(sql, function(error, result) {
@@ -116,10 +115,9 @@ function traerpeliscompetencia(req, res) {
     }
 
     function borrarvotos(req, res) {
-
         var idCompetencia = req.params.idCompetencia;
+        
         var sql = "DELETE FROM votos WHERE competencia_id = " + idCompetencia
-
         con.query(sql, function(error, result) {
             if (error) {
                 console.log(error)
@@ -130,7 +128,20 @@ function traerpeliscompetencia(req, res) {
         });
     }
     
-
+    function traergeneros(req, res) {
+        var idCompetencia = req.params.idCompetencia;
+        
+        var sql = "select * from genero"
+        con.query(sql, function(error, result) {
+            if (error) {
+                console.log(error)
+                console.log("Hubo un error en la consulta", error.message);
+                return res.status(404).send("No pudo crearse la competencia");
+            }
+            res.send("Competencia Reiniciada exitosamente");
+        });
+    }
+    
     
 module.exports = {
     competencia: competencia,
@@ -141,5 +152,7 @@ module.exports = {
     traerresultadoscompetencia: traerresultadoscompetencia,
     crearcompetencia: crearcompetencia,
 
-    borrarvotos:borrarvotos
+    borrarvotos:borrarvotos,
+
+    traergeneros: traergeneros
 };
