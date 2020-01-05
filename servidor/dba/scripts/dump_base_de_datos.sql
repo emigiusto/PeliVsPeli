@@ -103,7 +103,7 @@ CREATE TABLE `competencias` (
   `actor_id` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
   ) ENGINE=InnoDB AUTO_INCREMENT=1024 DEFAULT CHARSET=latin1;
-  INSERT INTO `competencias` VALUES (1,'¿Cuál es la mejor película?',null,null,null),(2,'¿Qué drama te hizo llorar más?',null,null,null),(3,'¿Cuál es la peli más bizarra?',null,null,null);
+  INSERT INTO `competencias` VALUES (1,'¿Cuál es la mejor película?',2,null,null),(2,'¿Qué drama te hizo llorar más?',null,null,null),(3,'¿Cuál es la peli más bizarra?',null,null,null);
 
 DROP TABLE IF EXISTS `votos`;
 CREATE TABLE `votos` (
@@ -116,3 +116,5 @@ CREATE TABLE `votos` (
   ALTER TABLE votos AUTO_INCREMENT=1;
 
   UNLOCK TABLES;
+  
+  select * from genero

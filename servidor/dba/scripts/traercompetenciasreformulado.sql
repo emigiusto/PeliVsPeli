@@ -3,8 +3,6 @@ competencias.nombre as 'competenciaNombre', competencias.id as 'competenciaId' ,
 
 from pelicula 
 
-join competencias on competencias.id = 1 
-
-where pelicula.genero_id = 2
-
+join  
+(select id, genero_id, director_id, actor_id from competencias where id = 1) as t1 on  t1.id = 1
 order by rand() limit 2
