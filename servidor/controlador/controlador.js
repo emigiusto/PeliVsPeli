@@ -15,6 +15,44 @@ function traercompetencias(req, res) {
     });
 }
 
+function traergeneros(req, res) {
+    var sql = "select * from genero"
+    con.query(sql, function(error, result) {
+        if (error) {
+            console.log(error)
+            console.log("Hubo un error en la consulta", error.message);
+            return res.status(404).send("No pudo crearse la competencia");
+        }
+        res.send("Competencia Reiniciada exitosamente");
+    });
+}
+
+function traerdirectores(req, res) {
+    var sql = "select * from director"
+    con.query(sql, function(error, result) {
+        if (error) {
+            console.log(error)
+            console.log("Hubo un error en la consulta", error.message);
+            return res.status(404).send("No pudo crearse la competencia");
+        }
+        res.send("Competencia Reiniciada exitosamente");
+    });
+}
+
+function traeractores(req, res) {
+    var sql = "select * from actor"
+    con.query(sql, function(error, result) {
+        if (error) {
+            console.log(error)
+            console.log("Hubo un error en la consulta", error.message);
+            return res.status(404).send("No pudo crearse la competencia");
+        }
+        res.send("Competencia Reiniciada exitosamente");
+    });
+}
+
+
+
 function competencia(req, res) {
 //TRAER DOS ALEATORIAS??
     var idCompetencia = req.params.id;
@@ -116,6 +154,7 @@ function traerpeliscompetencia(req, res) {
             });
     }
 
+    //GUIA 3 PUNTO 2
     function borrarvotos(req, res) {
         var idCompetencia = req.params.idCompetencia;
         
@@ -124,21 +163,7 @@ function traerpeliscompetencia(req, res) {
             if (error) {
                 console.log(error)
                 console.log("Hubo un error en la consulta", error.message);
-                return res.status(404).send("No pudo crearse la competencia");
-            }
-            res.send("Competencia Reiniciada exitosamente");
-        });
-    }
-    
-    function traergeneros(req, res) {
-        var idCompetencia = req.params.idCompetencia;
-        
-        var sql = "select * from genero"
-        con.query(sql, function(error, result) {
-            if (error) {
-                console.log(error)
-                console.log("Hubo un error en la consulta", error.message);
-                return res.status(404).send("No pudo crearse la competencia");
+                return res.status(404).send("La competencia no existe");
             }
             res.send("Competencia Reiniciada exitosamente");
         });
@@ -147,7 +172,7 @@ function traerpeliscompetencia(req, res) {
     
 module.exports = {
     competencia: competencia,
-    traercompetencias:traercompetencias,
+    
     traerpeliscompetencia: traerpeliscompetencia,
     votarunacompetencia:votarunacompetencia,
 
@@ -156,5 +181,8 @@ module.exports = {
 
     borrarvotos:borrarvotos,
 
-    traergeneros: traergeneros
+    traercompetencias: traercompetencias,
+    traergeneros: traergeneros,
+    traerdirectores: traerdirectores,
+    traeractores: traeractores
 };
