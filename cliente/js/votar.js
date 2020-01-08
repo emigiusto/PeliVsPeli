@@ -8,7 +8,6 @@ $(function() {
 	// Al hacer click en una película, se ejecuta el método "votar" del controller
 	$(".pelicula").click(function() {
 		var voto = $(this).find('.idPelicula').val();
-		console.log("Votaste la Peli " + voto)
 	    competenciasController.votar(idCompetencia, voto);
 	});
 });

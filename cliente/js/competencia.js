@@ -1,5 +1,5 @@
 // Esta es la ip y puerto en que necesitamos que esté el backend disponible
-var server = 'https://pelivspeliemi.herokuapp.com/';
+var server = 'https://pelivspeliemi.herokuapp.com';
 
 function CompetenciasController () {
 
@@ -83,7 +83,6 @@ function CompetenciasController () {
 		var opciones = $.getJSON(server+"/competencias/"+id+"/peliculas",
 	    function(data) {
 			// Se cargan las opciones en el DOM
-			console.log(data)
 			self.cargarOpciones(id, data);
 			
 	    });
@@ -111,9 +110,9 @@ function CompetenciasController () {
 		// Se realiza el post a la api
 	    $.post(server+"/competencias/"+idCompetencia+"/voto", data, function(response) {
 			// Se redirige al usuario a ver los resultados de la competencia en la que votó
-			
-		    window.location.replace("/resultados.html?id="+idCompetencia);
+		    console.log(response)
 		}, 'json');
+		window.location.replace("resultados.html?id="+idCompetencia);
 	},
 
 	// Este método obtiene los géneros existentes de películas del backend y los carga en un select en el DOM
