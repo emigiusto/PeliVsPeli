@@ -109,18 +109,19 @@ CREATE TABLE `competencias` (
   (3,'¿Cuál es la peli más bizarra?',null,null,null),
   (4,'¿xxxx?',null,3215,null),
   (5,'¿yyyyy?',null,null,10),
-  (6,'¿zzzzz?',3,null,4);
+  (6,'¿zzzzz?',6,null,401);
 
 DROP TABLE IF EXISTS `votos`;
 CREATE TABLE `votos` (
   `id` int unsigned AUTO_INCREMENT,
   `competencia_id` int(11) unsigned NOT NULL,
   `pelicula_id` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-  ) ENDGINE=InnoDB AUTO_INCREMENT=1024 DEFAULT CHARSET=latin1;
-  INSERT INTO `votos` VALUES (NULL,3,231),(NULL,2,543),(NULL,2,212);
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (competencia_id) REFERENCES competencias(id) ON DELETE CASCADE) 
+  ENGINE=InnoDB AUTO_INCREMENT=1024 DEFAULT CHARSET=latin1;
+
+  INSERT INTO `votos` VALUES (NULL,3,231),(NULL,1,543),(NULL,2,212);
   ALTER TABLE votos AUTO_INCREMENT=1;
 
   UNLOCK TABLES;
-  
-  select * from genero
+

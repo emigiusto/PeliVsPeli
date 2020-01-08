@@ -28,8 +28,8 @@ app.get('/competencias/:idCompetencia/resultados',controller.traerresultadoscomp
 app.post('/competencias/:idCompetencia/voto/',controller.votarunacompetencia);
 app.post('/competencias',controller.crearcompetencia);
 
-app.delete('/competencias/:idCompetencia/votos',controller.borrarvotos)
-
+app.delete('/competencias/:idCompetencia/votos',controller.borrarvotos);
+app.delete('/competencias/:idCompetencia',controller.borrarcompetencia);
 
 app.get('/',function (req, res) {
   res.send('Helloooo');

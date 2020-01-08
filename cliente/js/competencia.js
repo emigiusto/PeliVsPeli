@@ -58,13 +58,13 @@ function CompetenciasController () {
 		// Se obtiene de la api el detalle de una competencia
 		var opciones = $.getJSON(server+"/competencias/"+id, function(data) {
 			// Se carga la información obtenida en el DOM
-			console.log(data)
 	    	self.cargarCompetencia(id, data);
 	    });
 	},
 	this.cargarCompetencia = function (id, data){
 		// data es el detalle de una competencia que retornó la api (un objeto json)
 		// Se coloca en el elemento correspondiente el nombre de la competencia
+		console.log(data[0])
 		$(".nombre").text(data[0].nombre);
 		$(".nombre").val(data[0].nombre);
 		// Se coloca en el elemento correspondiente el género de películas de la competencia, si es que hay alguno
