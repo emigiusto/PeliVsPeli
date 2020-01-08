@@ -107,8 +107,9 @@ CREATE TABLE `competencias` (
   VALUES (1,'¿Cuál es la mejor película?',2,null,null),
   (2,'¿Qué drama te hizo llorar más?',null,null,null),
   (3,'¿Cuál es la peli más bizarra?',null,null,null),
-  (4,'¿xxxx?',null,'Joe Carnahan',null),
-  (5,'¿yyyyy?',null,null,54);
+  (4,'¿xxxx?',null,3215,null),
+  (5,'¿yyyyy?',null,null,10),
+  (6,'¿zzzzz?',3,null,4);
 
 DROP TABLE IF EXISTS `votos`;
 CREATE TABLE `votos` (
