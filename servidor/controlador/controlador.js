@@ -74,7 +74,7 @@ function traerpeliscompetencia(req, res) {
 
         var idCompetencia = req.params.id;
         var sql =   "SELECT DISTINCT pelicula.id AS 'peliculaId',tactores.actor_id AS 'actorId',pelicula.genero_id AS 'generoId',tdirectores.director_id AS 'directorId',"
-                +   "pelicula.titulo,tcompetencias.nombre AS 'nombreCompetencia',tcompetencias.id AS 'idCompetencia',tcompetencias.genero_id AS 'generoCompetencia',tcompetencias.director_id AS 'directorCompetencia',"
+                +   "pelicula.titulo, pelicula.poster, pelicula.anio,tcompetencias.nombre AS 'nombreCompetencia',tcompetencias.id AS 'idCompetencia',tcompetencias.genero_id AS 'generoCompetencia',tcompetencias.director_id AS 'directorCompetencia',"
                 +   "tcompetencias.actor_id AS 'actorCompetencia' "
                 +   "FROM pelicula "
                 +   "JOIN (SELECT id, genero_id, director_id, actor_id, nombre FROM competencias) AS tcompetencias ON tcompetencias.id = " + idCompetencia
