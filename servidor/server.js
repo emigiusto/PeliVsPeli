@@ -31,8 +31,10 @@ app.post('/competencias',controller.crearcompetencia);
 app.delete('/competencias/:idCompetencia/votos',controller.borrarvotos);
 app.delete('/competencias/:idCompetencia',controller.borrarcompetencia);
 
+app.put('/competencias/:idCompetencia',controller.editarcompetencia);
+
 app.get('/',function (req, res) {
-  res.send('Helloooo');
+  res.send('Helloooo to Peli vs Peli App');
 });
 //seteamos el puerto en el cual va a escuchar los pedidos la aplicación
 var puerto = process.env.PORT || 8080;

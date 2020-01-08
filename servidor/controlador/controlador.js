@@ -51,8 +51,6 @@ function traeractores(req, res) {
     });
 }
 
-
-
 function competencia(req, res) {
     var idCompetencia = req.params.id;
     var sql = "select competencias.nombre as 'nombre', genero.nombre as 'genero_nombre', actor.nombre as 'actor_nombre', director.nombre as 'director_nombre' from competencias "
@@ -166,9 +164,28 @@ function traerpeliscompetencia(req, res) {
         con.query(sql, function(error, result) {
                 if (error) {
                     console.log("Hubo un error en la consulta", error.message);
-                    return res.status(404).send("No pudo crearse la competencia");
+                    return res.status(404).send("No pudo borrarse la competencia");
                 }
                 res.send("Competencia Borrada Exitosamente");
+            });
+    }
+
+    function editarcompetencia(req, res) {
+        var idCompetencia = req.params.idCompetencia;
+        var competencia = req.body;
+        var sql =   "UPDATE competencias SET "
+                +   "nombre = '" + competencia.nombre + "'" 
+                /*+   ", genero_id = '" + competencia.genero + "' , "
+                +   "director_id = '" + competencia.director + "' , " 
+                +   "actor_id = '" + competencia.actor + "' , "  */
+                +   " WHERE id =" + idCompetencia + ";"
+
+        con.query(sql, function(error, result) {
+                if (error) {
+                    console.log("Hubo un error en la consulta", error.message);
+                    return res.status(404).send("No pudo editarse la competencia");
+                }
+                res.send("Competencia Editada Exitosamente");
             });
     }
     
@@ -200,6 +217,7 @@ module.exports = {
 
     crearcompetencia: crearcompetencia,
     borrarcompetencia: borrarcompetencia,
+    editarcompetencia: editarcompetencia,
 
     traercompetencias: traercompetencias,
     traergeneros: traergeneros,
