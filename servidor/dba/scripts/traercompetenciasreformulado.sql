@@ -10,4 +10,4 @@ WHERE
 AND tdirectores.director_id LIKE CASE WHEN (tcompetencias.director_id IS NULL = 1) THEN '%' ELSE tcompetencias.director_id END
 AND tactores.actor_id LIKE CASE WHEN (tcompetencias.actor_id IS NULL = 1) THEN '%' ELSE tcompetencias.actor_id END
 group by pelicula.id
-ORDER BY RAND()
+ORDER BY RAND() limit 2
